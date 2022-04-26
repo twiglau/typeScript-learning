@@ -1,0 +1,50 @@
+.tree {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tree-node {
+    color: #333;
+}
+.folder-a {
+    width: 18px;
+    margin: 0px 5px;
+}
+.children {
+    padding-left: 20px;
+}
+
+.inner {
+    color: #000;
+    font-size: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.collapse {
+    position:absolute;
+    left: 0;
+    cursor: pointer;
+}
+.c-loading {
+    padding-right: 5px;
+}
+.caret-right:before{
+    
+    content: '\25B8';
+    font-size: 10px;
+}
+.caret-down:before{
+    content: '\25BE';
+    font-size: 10px;
+}
+.content {
+    display: inline-block;
+    width: 100%;
+    padding: 4px 5px;
+}
