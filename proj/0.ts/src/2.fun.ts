@@ -12,7 +12,10 @@ let getUserName: GetUserNameType = function(firstName:string, lastName: string):
 }{
     return {name: firstName + lastName};
 }
-
+/**
+ * 默认参数 (=), 可选参数 (?) 一般都放置于后面
+ * 默认参数可以不指定类型, 会自动判断和计算
+ */
 // 可选参数
 function print(name:string, age?:number, home?:string){
 
