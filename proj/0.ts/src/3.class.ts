@@ -67,6 +67,9 @@ namespace d {
         setName(newName: string){
             this.name = newName;
         }
+        say() {
+            console.log('say hello')
+        }
     }
     class Student extends Person {
         static type = 'Student'
@@ -77,6 +80,10 @@ namespace d {
         }
         static getType(){
             return Student.type;
+        }
+        say(): void {
+            super.say()
+            console.log('student say hello')
         }
         getStuNo(){
             // this.amount 
@@ -91,4 +98,31 @@ namespace d {
     // console.log(s.age); // protected 在外面不可以访问 age
     console.log(Student.type);
     console.log(Student.getType());
+}
+
+// 多态: 父类引用(类型) 指向 子类对象
+// 多态的目的: 为了写出更加具有通用性的代码
+namespace e {
+    class Animal {
+        action() {
+            console.log("animal action")
+        }
+    }
+    class Dog extends Animal {
+        action(): void {
+            console.log("dog running!")
+        }
+    }
+    class Fish extends Animal {
+        action(): void {
+            console.log("fish swimming")
+        }
+    }
+
+    function makeActions(animals: Animal[]) {
+        animals.forEach(animal => {
+            animal.action()
+        })
+    }
+    makeActions([new Dog(), new Fish()])
 }
