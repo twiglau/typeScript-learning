@@ -1,10 +1,9 @@
 
 /**
  * 为什么会有泛型, 它的意义在哪里?  
- * 
+ *  1. 类型的参数化: 在定义函数时, 不决定这些参数的类型, 而是让调用者以参数的形式告知, 我这里的函数参数应该是什么类型.
  */
 namespace a {
-    // 1. 泛型
     function createArray<T>(length: number, value: T):Array<T> {
         let result: Array<T> = []
         for(let i=0;i<length;i++){
@@ -12,14 +11,18 @@ namespace a {
         }
         return result;
     }
+    // 1.1 调用方式一: 明确的传入类型
     let result = createArray<string>(3, 'x');
     console.log(result);
+    // 1.2 方式二: 类型推导
+    let result2 = createArray(4, 5);
+    console.log(result2);
 
     // 2. 类数组 ArrayLike arguments
     function sum(...args2: any[]){
         let args: IArguments = arguments;
         for(let i=0;i<args.length;i++){
-            console.log(args[i]);
+            console.log('args[i]:',args[i]);
         }
     }
     sum(1,2,3);

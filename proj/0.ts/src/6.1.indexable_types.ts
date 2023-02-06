@@ -1,8 +1,22 @@
-interface States {
-    [index: string]: boolean;
+
+namespace a {
+    interface States {
+        [state: string]: boolean;
+    }
+    let s: States = { 'enabled': true, 'maximized': false}
+    console.log(s);
+    console.log(s["enabled"]);
+    
+    interface ILanguageYear {
+        [name: string]: number
+    }
+    const languageYear = {
+        "C": 1972,
+        "Java": 1995,
+        "JavaScript": 1996,
+        "TypeScript": 2014
+    }
 }
-let s: States = { "enabled": true, "maximized": false}
-console.log(s);
 
 interface States1 {
     [index: number]: number;

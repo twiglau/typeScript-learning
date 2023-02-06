@@ -18,15 +18,15 @@ namespace a {
 namespace b {
 
     class Person {
-        myName: string;
+        private _name: string;
         constructor(name: string){
-            this.myName = name;
+            this._name = name;
         }
         get name(){
-            return this.myName
+            return this._name
         }
         set name(newVal: string){
-            this.myName = newVal.toUpperCase();
+            this._name = newVal.toUpperCase();
         }
     }
     let p = new Person('lau');
@@ -35,13 +35,21 @@ namespace b {
 
 namespace c {
     class Person {
-        constructor( public readonly name: string){
+        // 只读属性是可以在构造器中赋值, 赋值之后就不可以修改
+        readonly friend?: Person
+        age?:number
+        constructor( public readonly name: string, friend?: Person){
             // this.name = name 
         }
     }
-    let p = new Person('lau');
+    let p = new Person('lau', new Person('kobe'));
     p.name;
     // p.name = 'twig' // readonly
+    // 赋值的时候, 不允许使用: 可选链
+    // p.friend?.name = "james"
+    if(p.friend) {
+        p.friend.age = 30
+    }
 
 }
 

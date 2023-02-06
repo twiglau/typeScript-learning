@@ -1,5 +1,19 @@
-// 任意属性 
+
+
 namespace a {
+    // 通过类型(type)别名来声明对象类型
+    type InfoType = { name: string, age: number }
+
+    // 另外一种方式声明对象类型: 接口interface
+    interface InfoType2 {
+        name: string
+        age: number
+        friend?: {
+            name: string
+        }
+    }
+
+    // 任意属性 
     interface PlainObject {
         [propName:string]: number;
     }
@@ -22,7 +36,29 @@ namespace b {
         speakChinese(): void {}
     }
 }
-
+namespace g {
+    // 接口的实现
+    interface ISwim {
+        swimming: ()=>void
+    }
+    interface IEat {
+        eating: ()=>void
+    }
+    // 对象实现
+    const a: ISwim = {
+        swimming() {
+            
+        }
+    }
+    class Animal {}
+    // 继承: 只能实现单继承
+    // 实现: 类实现接口, 类可以实现多个接口
+    class Fish extends Animal implements IEat, ISwim {
+        eating() {}
+        swimming() {}
+    }
+    // 作用: 编写一些公共的API: 面向接口编程
+}
 namespace c {
     // 接口的只读 readonly
     interface Circle {
@@ -79,4 +115,31 @@ namespace e {
         return new clazz(name);
     }
     let a = createAnimal(Animal, 'dog');
+}
+
+namespace f {
+    // 一种组合类型的方式: 联合类型
+    type WhyType = number | string
+    type Direction = "left" | "right" | "center"
+
+    // 另一种组合类型的方式: 交叉类型
+    type WType = number & string
+
+    interface ISwim {
+        swimming: () => void
+    }
+    interface IFly {
+        flying: () => void
+    }
+
+    type MyType1 = ISwim | IFly
+    type MyType2 = ISwim & IFly
+
+    const obj1: MyType1 = {
+        swimming() {}
+    }
+    const obj2: MyType2 = {
+        swimming() {},
+        flying() {}
+    }
 }
